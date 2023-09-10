@@ -1,37 +1,22 @@
 package com.hnd.task.dto.response;
 
-import org.springframework.http.HttpStatusCode;
+import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
 import java.time.OffsetTime;
 import java.time.ZoneOffset;
 
+@Component
 public class Response {
-    ZoneOffset zoneOffSet = ZoneOffset.of("+02:00");
-    OffsetTime time;
+    private final ZoneOffset zoneOffSet = ZoneOffset.of("+02:00");
+    private OffsetTime time;
     private String slack_name;
     private String current_day = LocalDateTime.now().getDayOfWeek().toString();
     private String utc_time  = OffsetTime.now(zoneOffSet).toString();
     private String track;
-    private String github_file_url;
-    private String github_repo_url;
-    private HttpStatusCode status_code ;
-
-    public ZoneOffset getZoneOffSet() {
-        return zoneOffSet;
-    }
-
-    public void setZoneOffSet(ZoneOffset zoneOffSet) {
-        this.zoneOffSet = zoneOffSet;
-    }
-
-    public OffsetTime getTime() {
-        return time;
-    }
-
-    public void setTime(OffsetTime time) {
-        this.time = time;
-    }
+    private final String github_file_url = "https://github.com/iAmSherifCodes/HNG-stageOne/blob/main/src/main/java/com/hnd/task/TaskApplication.java";
+    private final String github_repo_url = "https://github.com/iAmSherifCodes/HNG-stageOne";
+    private int status_code;
 
     public String getSlack_name() {
         return slack_name;
@@ -69,23 +54,30 @@ public class Response {
         return github_file_url;
     }
 
-    public void setGithub_file_url(String github_file_url) {
-        this.github_file_url = github_file_url;
-    }
-
     public String getGithub_repo_url() {
         return github_repo_url;
     }
 
-    public void setGithub_repo_url(String github_repo_url) {
-        this.github_repo_url = github_repo_url;
-    }
-
-    public HttpStatusCode getStatus_code() {
+    public int getStatus_code() {
         return status_code;
     }
 
-    public void setStatus_code(HttpStatusCode status_code) {
+    public void setStatus_code(int status_code) {
         this.status_code = status_code;
+    }
+
+    @Override
+    public String toString() {
+        return "Response{" +
+                "zoneOffSet=" + zoneOffSet +
+                ", time=" + time +
+                ", slack_name='" + slack_name + '\'' +
+                ", current_day='" + current_day + '\'' +
+                ", utc_time='" + utc_time + '\'' +
+                ", track='" + track + '\'' +
+                ", github_file_url='" + github_file_url + '\'' +
+                ", github_repo_url='" + github_repo_url + '\'' +
+                ", status_code=" + status_code +
+                '}';
     }
 }

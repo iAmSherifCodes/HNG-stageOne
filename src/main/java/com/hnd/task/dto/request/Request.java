@@ -1,5 +1,8 @@
 package com.hnd.task.dto.request;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class Request {
     private String slack_name;
     private String track;
